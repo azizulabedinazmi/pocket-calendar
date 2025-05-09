@@ -1,14 +1,14 @@
 "use client"
 
-import { SettingsIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Label } from "@/components/ui/label"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Switch } from "@/components/ui/switch"
 import { translations, type Language } from "@/lib/i18n"
 import type { NOTIFICATION_SOUNDS } from "@/utils/notifications"
-import { Switch } from "@/components/ui/switch"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { SettingsIcon } from "lucide-react"
 import { useTheme } from "next-themes"
 
 interface SettingsProps {
@@ -110,18 +110,18 @@ export default function Settings({
               </Select>
             </div>
 
-            {/*<div className="space-y-2">
+            <div className="space-y-2">
               <Label htmlFor="language">{t.language}</Label>
-              <Select value={language} onValueChange={(value: Language) => handleLanguageChange(value)}>
-                <SelectTrigger id="language">
-                  <SelectValue />
+              <Select value={language} onValueChange={handleLanguageChange}>
+                <SelectTrigger>
+                  <SelectValue placeholder={t.language} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="en">English</SelectItem>
-                  <SelectItem value="zh">中文</SelectItem>
+                  <SelectItem value="bn">বাংলা</SelectItem>
                 </SelectContent>
               </Select>
-            </div>*/}
+            </div>
 
             <div className="space-y-2">
               <Label htmlFor="first-day">{t.firstDayOfWeek}</Label>

@@ -18,7 +18,7 @@ interface CalendarEvent {
   recurrence: string;
 }
 
-type Language = 'en';
+type Language = 'en' | 'bn';
 
 interface Translations {
   eventsCalendar: string;
@@ -39,6 +39,15 @@ const translations: Record<Language, Translations> = {
     more: 'More',
     weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  },
+  bn: {
+    eventsCalendar: 'ইভেন্ট ক্যালেন্ডার',
+    selectYear: 'বছর নির্বাচন করুন',
+    noEvents: 'কোন ইভেন্ট পাওয়া যায়নি',
+    less: 'কম',
+    more: 'বেশি',
+    weekdays: ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহস্পতি', 'শুক্র', 'শনি'],
+    months: ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর']
   }
 };
 
@@ -50,7 +59,16 @@ const EventsCalendar: React.FC = () => {
   
   // Update language detection
   useEffect(() => {
-    setLanguage('en'); // Always set to English
+    const detectLanguage = () => {
+      const browserLang = navigator.language.toLowerCase();
+      if (browserLang.startsWith('bn')) {
+        setLanguage('bn');
+      } else {
+        setLanguage('en');
+      }
+    };
+
+    detectLanguage();
   }, []);
   
   const t = translations[language];
