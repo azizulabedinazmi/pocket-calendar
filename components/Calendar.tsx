@@ -21,7 +21,7 @@ import MonthView from "@/components/view/MonthView"
 import WeekView from "@/components/view/WeekView"
 import { useLocalStorage } from "@/hooks/useLocalStorage"
 import { translations, useLanguage } from "@/lib/i18n"
-import { checkPendingNotifications, clearAllNotificationTimers } from "@/lib/notifications"
+import { checkPendingNotifications, clearAllNotificationTimers, startNotificationChecking, stopNotificationChecking } from "@/lib/notifications"
 import { addDays, subDays } from "date-fns"
 import { ChevronLeft, ChevronRight, PanelLeft, Search } from 'lucide-react'
 import { Suspense, useEffect, useRef, useState } from "react"
@@ -295,23 +295,20 @@ const handleShare = (event: CalendarEvent) => {
   const filteredEvents = events.filter((event) => event.title.toLowerCase().includes(searchTerm.toLowerCase()))
 
   useEffect(() => {
-    if (!notificationsInitializedRef.current) {
-      checkPendingNotifications()
-      notificationsInitializedRef.current = true
-    }
-
-    if (!notificationIntervalRef.current) {
-      notificationIntervalRef.current = setInterval(() => {
-        checkPendingNotifications()
-      }, 60000)
-    }
-
+    console.log('Initializing notification system');
+    
+    // Start notification checking
+    startNotificationChecking();
+    
+    // Initial check
+    checkPendingNotifications();
+    
+    // Cleanup
     return () => {
-      if (notificationIntervalRef.current) {
-        clearInterval(notificationIntervalRef.current)
-      }
-    }
-  }, [])
+      console.log('Cleaning up notification system');
+      stopNotificationChecking();
+    };
+  }, []);
 
   useEffect(() => {
     window.addEventListener("beforeunload", clearAllNotificationTimers)
