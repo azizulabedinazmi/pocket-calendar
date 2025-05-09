@@ -2,18 +2,18 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { Input } from "@/components/ui/input"
-import { Bookmark, Search, Trash2 } from "lucide-react"
-import { format } from "date-fns"
-import { zhCN, enUS } from "date-fns/locale"
-import { toast } from "sonner"
-import { cn } from "@/lib/utils"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { useLanguage } from "@/hooks/useLanguage"
 import { translations } from "@/lib/i18n"
+import { cn } from "@/lib/utils"
+import { format } from "date-fns"
+import { enUS, zhCN } from "date-fns/locale"
+import { Bookmark, Search, Trash2 } from "lucide-react"
+import { useEffect, useState } from "react"
+import { toast } from "sonner"
 
 interface BookmarkPanelProps {
   open: boolean
@@ -97,7 +97,7 @@ export default function BookmarkPanel({ open, onOpenChange, onEventClick }: Book
         <SheetHeader className="p-4 border-b">
           <SheetTitle className="flex items-center">
             <Bookmark className="mr-2 h-5 w-5" />
-            {language === "zh" ? "收藏夹" : "Bookmarks"}
+            {language === "en" ? "收藏夹" : "Bookmarks"}
           </SheetTitle>
         </SheetHeader>
 
