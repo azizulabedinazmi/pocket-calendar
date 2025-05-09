@@ -97,15 +97,21 @@ export default function Settings({
         <ScrollArea className="flex-1 pr-4">
           <div className="space-y-6 py-4">
             <div className="space-y-2">
-              <Label htmlFor="theme">{language === "zh" ? "主题" : "Theme"}</Label>
+              <Label htmlFor="theme">{language === "bn" ? "থিম" : "Theme"}</Label>
               <Select>
                 <SelectTrigger>
                   <SelectValue placeholder="Theme" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="light" onClick={() => setTheme("light")}>{language === "zh" ? "亮色" : "Light"}</SelectItem>
-                  <SelectItem value="dark" onClick={() => setTheme("dark")}>{language === "zh" ? "暗色" : "Dark"}</SelectItem>
-                  <SelectItem value="system" onClick={() => setTheme("system")}>{language === "zh" ? "系统" : "System"}</SelectItem>
+                  <SelectItem value="light" onClick={() => setTheme("light")}>
+                    {language === "bn" ? "হালকা" : "Light"}
+                  </SelectItem>
+                  <SelectItem value="dark" onClick={() => setTheme("dark")}>
+                    {language === "bn" ? "গাঢ়" : "Dark"}
+                  </SelectItem>
+                  <SelectItem value="system" onClick={() => setTheme("system")}>
+                    {language === "bn" ? "সিস্টেম" : "System"}
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -141,7 +147,7 @@ export default function Settings({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="default-view">{language === "zh" ? "默认视图" : "Default View"}</Label>
+              <Label htmlFor="default-view">{language === "bn" ? "ডিফল্ট ভিউ" : "Default View"}</Label>
               <Select value={defaultView} onValueChange={setDefaultView}>
                 <SelectTrigger id="default-view">
                   <SelectValue />
@@ -190,21 +196,25 @@ export default function Settings({
 
             <div className="flex items-center space-x-2">
               <Switch id="enable-shortcuts" checked={enableShortcuts} onCheckedChange={setEnableShortcuts} />
-              <Label htmlFor="enable-shortcuts">{language === "zh" ? "开启快捷键" : "Enable Keyboard Shortcuts"}</Label>
+              <Label htmlFor="enable-shortcuts">
+                {language === "bn" ? "কীবোর্ড শর্টকাট সক্রিয় করুন" : "Enable Keyboard Shortcuts"}
+              </Label>
             </div>
 
             {enableShortcuts && (
               <div className="rounded-md border p-4">
-                <h3 className="mb-2 font-medium">{language === "zh" ? "可用快捷键" : "Available Shortcuts"}</h3>
+                <h3 className="mb-2 font-medium">
+                  {language === "bn" ? "উপলব্ধ শর্টকাট" : "Available Shortcuts"}
+                </h3>
                 <div className="grid grid-cols-2 gap-2 text-sm">
-                  <div>N - {language === "zh" ? "创建新事件" : "New Event"}</div>
-                  <div>/ - {language === "zh" ? "搜索事件" : "Search Events"}</div>
-                  <div>T - {language === "zh" ? "今天" : "Today"}</div>
-                  <div>1 - {language === "zh" ? "日视图" : "Day View"}</div>
-                  <div>2 - {language === "zh" ? "周视图" : "Week View"}</div>
-                  <div>3 - {language === "zh" ? "月视图" : "Month View"}</div>
-                  <div>→ - {language === "zh" ? "下个周期" : "Next Period"}</div>
-                  <div>← - {language === "zh" ? "上个周期" : "Previous Period"}</div>
+                  <div>N - {language === "bn" ? "নতুন ইভেন্ট" : "New Event"}</div>
+                  <div>/ - {language === "bn" ? "ইভেন্ট খুঁজুন" : "Search Events"}</div>
+                  <div>T - {language === "bn" ? "আজ" : "Today"}</div>
+                  <div>1 - {language === "bn" ? "দিনের ভিউ" : "Day View"}</div>
+                  <div>2 - {language === "bn" ? "সপ্তাহের ভিউ" : "Week View"}</div>
+                  <div>3 - {language === "bn" ? "মাসের ভিউ" : "Month View"}</div>
+                  <div>→ - {language === "bn" ? "পরবর্তী সময়কাল" : "Next Period"}</div>
+                  <div>← - {language === "bn" ? "পূর্ববর্তী সময়কাল" : "Previous Period"}</div>
                 </div>
               </div>
             )}
