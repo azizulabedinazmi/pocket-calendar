@@ -106,7 +106,7 @@ export default function BookmarkPanel({ open, onOpenChange, onEventClick }: Book
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
-              placeholder={language === "zh" ? "搜索收藏..." : "Search bookmarks..."}
+              placeholder="Search bookmarks..."
               className="pl-8"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -118,9 +118,9 @@ export default function BookmarkPanel({ open, onOpenChange, onEventClick }: Book
               <div className="flex flex-col items-center justify-center h-32 text-center text-muted-foreground">
                 <Bookmark className="h-10 w-10 mb-2 opacity-20" />
                 {searchTerm ? (
-                  <p>{language === "zh" ? "没有找到匹配的收藏" : "No matching bookmarks found"}</p>
+                  <p>"No matching bookmarks found"</p>
                 ) : (
-                  <p>{language === "zh" ? "您还没有收藏任何事件" : "You haven't bookmarked any events yet"}</p>
+                  <p>"You haven't bookmarked any events yet"</p>
                 )}
               </div>
             ) : (
