@@ -1,19 +1,19 @@
-import { useState, useEffect } from "react"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
-import { User, BookText, Plus, ArrowLeft, BarChart2, Edit2, Trash2, Calendar, Bookmark, MessageSquare } from 'lucide-react'
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import { cn } from "@/lib/utils"
-import { translations, useLanguage } from "@/lib/i18n"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import MiniCalendarSheet from "./MiniCalendarSheet"
-import BookmarkPanel from "./BookmarkPanel"
-import AIChatSheet from "./AIChat"
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Textarea } from "@/components/ui/textarea"
+import { translations, useLanguage } from "@/lib/i18n"
+import { cn } from "@/lib/utils"
+import { ArrowLeft, BarChart2, Bookmark, BookText, Calendar, Edit2, MessageSquare, Plus, Trash2, User } from 'lucide-react'
 import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+import AIChatSheet from "./AIChat"
+import BookmarkPanel from "./BookmarkPanel"
+import MiniCalendarSheet from "./MiniCalendarSheet"
 
 // 通讯录类型定义
 interface Contact {
@@ -649,7 +649,7 @@ export default function RightSidebar({ onViewChange, onEventClick }: RightSideba
             </div>
           </Button>
         }
-        systemPrompt="你是一个日历 app 的 ai 助手，用户向你只能向你提问关于日历以及一些日程、时间等的问题，其他问题一律无视。以及禁止使用 markdown 输出，只能输出纯文本，当然可用 emoji，但是少量使用。你需要分析用户输入的语言并使用用户发送的语言回复，这里的中文提示词只是告诉你，并不是代表使用中文回答"
+        systemPrompt="You are a calendar app AI assistant. You can only answer questions about calendars, schedules, and time management. Ignore all other questions. Use plain text only (no markdown), and use emojis sparingly. Always respond in English, regardless of the user's input language."
       />
         </div>
       </div>
