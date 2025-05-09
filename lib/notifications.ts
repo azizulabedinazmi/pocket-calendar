@@ -24,13 +24,26 @@ export const checkPendingNotifications = () => {
   pendingEvents.forEach((event) => {
     triggerNotification(event);
     showToast(event);
+    
+    // Remove the notification time after triggering to prevent duplicate notifications
+    const events = JSON.parse(localStorage.getItem("events") || "[]");
+    const updatedEvents = events.map((e: any) => {
+      if (e.id === event.id) {
+        return { ...e, notificationTime: null };
+      }
+      return e;
+    });
+    localStorage.setItem("events", JSON.stringify(updatedEvents));
   });
 };
 
 // 获取待处理的事件
 const getPendingEvents = (currentTime: number) => {
   const events = JSON.parse(localStorage.getItem("events") || "[]");
-  return events.filter((event: any) => event.notificationTime <= currentTime);
+  return events.filter((event: any) => {
+    // Check if the event has a notification time and if it's time to notify
+    return event.notificationTime && event.notificationTime <= currentTime;
+  });
 };
 
 // 播放通知声音

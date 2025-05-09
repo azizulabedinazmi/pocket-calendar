@@ -1,20 +1,20 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { useCalendar } from "@/components/context/CalendarContext"
 import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Calendar } from "@/components/ui/calendar"
-import { format, parse, isValid, set, getHours, getMinutes } from "date-fns"
-import { cn } from "@/lib/utils"
 import { translations, type Language } from "@/lib/i18n"
-import { useCalendar } from "@/components/context/CalendarContext"
+import { cn } from "@/lib/utils"
+import { format, getHours, getMinutes, set } from "date-fns"
 import { ArrowRight, Calendar as CalendarIcon, Clock } from "lucide-react"
+import { useEffect, useState } from "react"
 
 const colorOptions = [
   { value: "bg-blue-500", label: "Blue" },
@@ -377,7 +377,6 @@ export default function EventDialog({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // 验证表单数据
     if (!validateForm()) {
       return;
     }
@@ -390,9 +389,12 @@ export default function EventDialog({
     const fullStartDate = getFullStartDate();
     const fullEndDate = getFullEndDate();
 
+    // Calculate the notification time
+    const notificationTime = new Date(fullStartDate.getTime() - (notificationMinutes * 60 * 1000));
+
     const eventData: CalendarEvent = {
       id: event?.id || Date.now().toString() + Math.random().toString(36).substring(2, 9),
-      title: title.trim() || (language === "zh" ? "未命名事件" : "Untitled Event"),
+      title: title.trim() || (language === "bn" ? "নামহীন ইভেন্ট" : "Untitled Event"),
       isAllDay,
       startDate: fullStartDate,
       endDate: fullEndDate,
@@ -403,6 +405,7 @@ export default function EventDialog({
         .map((p) => p.trim())
         .filter(Boolean),
       notification: notificationMinutes,
+      notificationTime: notificationTime.getTime(),
       description,
       color,
       calendarId: selectedCalendar || (calendars.length > 0 ? calendars[0]?.id : "1"),
