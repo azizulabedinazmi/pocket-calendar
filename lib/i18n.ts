@@ -1,8 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-export type Language = "en" | "zh"
+export type Language = "en";
 
 export const translations = {
   en: {
@@ -485,20 +485,44 @@ function detectSystemLanguage(): Language {
 }
 
 export function useLanguage(): [Language, (lang: Language) => void] {
-  const [language, setLanguageState] = useState<Language>("en"); // Default to English
+  const [language, setLanguageState] = useState<Language>("zh") // 默认为中文
+
+  // 从localStorage读取语言设置
+  const readLanguageFromStorage = () => {
+    const storedLanguage = localStorage.getItem("preferred-language")
+    if (storedLanguage === "en" || storedLanguage === "zh") {
+      return storedLanguage as Language
+    }
+    return detectSystemLanguage()
+  }
 
   useEffect(() => {
-    // Initialize with English only
-    setLanguageState("en");
-  }, []);
+    // 初始化时读取语言设置
+    const storedLanguage = readLanguageFromStorage()
+    setLanguageState(storedLanguage)
+
+    // 创建一个事件监听器，当localStorage变化时触发
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === "preferred-language") {
+        const newLanguage = e.newValue as Language
+        if (newLanguage === "en" || newLanguage === "zh") {
+          setLanguageState(newLanguage)
+        }
+      }
+    }
+
+    window.addEventListener("storage", handleStorageChange)
+    return () => {
+      window.removeEventListener("storage", handleStorageChange)
+    }
+  }, [])
 
   const setLanguage = (lang: Language) => {
-    if (lang === "en") {
-      setLanguageState(lang);
-      localStorage.setItem("preferred-language", lang);
-      window.dispatchEvent(new Event("languagechange"));
-    }
-  };
+    setLanguageState(lang)
+    localStorage.setItem("preferred-language", lang)
+    // 触发一个自定义事件，通知其他组件语言已更改
+    window.dispatchEvent(new Event("languagechange"))
+  }
 
   return [language, setLanguage]
 }
