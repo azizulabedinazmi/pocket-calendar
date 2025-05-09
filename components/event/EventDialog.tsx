@@ -4,17 +4,16 @@ import { useCalendar } from "@/components/context/CalendarContext"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { translations, type Language } from "@/lib/i18n"
-import { checkPendingNotifications } from "@/lib/notifications"
 import { cn } from "@/lib/utils"
 import { format, getHours, getMinutes, set } from "date-fns"
-import { Calendar as CalendarIcon, Clock } from "lucide-react"
+import { ArrowRight, Calendar as CalendarIcon, Clock } from "lucide-react"
 import { useEffect, useState } from "react"
 
 const colorOptions = [
@@ -390,6 +389,11 @@ export default function EventDialog({
     const fullStartDate = getFullStartDate();
     const fullEndDate = getFullEndDate();
 
+    console.log('Creating event with notification:', {
+      startDate: fullStartDate,
+      notificationMinutes,
+    });
+
     const eventData: CalendarEvent = {
       id: event?.id || Date.now().toString() + Math.random().toString(36).substring(2, 9),
       title: title.trim() || (language === "bn" ? "নামহীন ইভেন্ট" : "Untitled Event"),
@@ -408,17 +412,14 @@ export default function EventDialog({
       calendarId: selectedCalendar || (calendars.length > 0 ? calendars[0]?.id : "1"),
     }
 
-    // Save event
+    console.log('Saving event:', eventData);
+
     if (event) {
-      onEventUpdate(eventData);
+      onEventUpdate(eventData)
     } else {
-      onEventAdd(eventData);
+      onEventAdd(eventData)
     }
-    
-    // Force check notifications after adding/updating event
-    setTimeout(checkPendingNotifications, 1000);
-    
-    onOpenChange(false);
+    onOpenChange(false)
   }
 
   const handleAiSubmit = async () => {
@@ -566,12 +567,43 @@ export default function EventDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent aria-describedby="event-dialog-description">
+      <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{event ? t.updateEvent : t.createEvent}</DialogTitle>
-          <DialogDescription id="event-dialog-description">
-            {event ? t.updateEventDesc : t.createEventDesc}
-          </DialogDescription>
+          <div className="flex justify-between items-center">
+            <DialogTitle>{event ? t.update : t.createEvent}</DialogTitle>
+            <div className="flex space-x-2">
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="ghost" size="icon" className="rounded-full">
+                    <span className="text-sm bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+                      AI
+                    </span>
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-80 p-4" align="end">
+                  <div className="space-y-2">
+                    <Label htmlFor="ai-prompt">AI Prompt</Label>
+                    <div className="flex gap-2">
+                      <Input
+                        id="ai-prompt"
+                        value={aiPrompt}
+                        onChange={(e) => setAiPrompt(e.target.value)}
+                        placeholder="Example: Team meeting next Monday at 10am"
+                        className="flex-1"
+                      />
+                      <Button
+                        size="icon"
+                        onClick={handleAiSubmit}
+                        disabled={isAiLoading || !aiPrompt.trim()}
+                      >
+                        <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </PopoverContent>
+              </Popover>
+            </div>
+          </div>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 pb-6">
           <div>
