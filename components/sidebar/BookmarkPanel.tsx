@@ -10,7 +10,7 @@ import { useLanguage } from "@/hooks/useLanguage"
 import { translations } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 import { format } from "date-fns"
-import { enUS, zhCN } from "date-fns/locale"
+import { bn, enUS } from "date-fns/locale"
 import { Bookmark, Search, Trash2 } from "lucide-react"
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
@@ -61,7 +61,7 @@ export default function BookmarkPanel({ open, onOpenChange, onEventClick }: Book
   // Format date for display
   const formatEventDate = (dateString: string | Date) => {
     const date = new Date(dateString)
-    return format(date, "yyyy-MM-dd HH:mm", { locale: language === "zh" ? zhCN : enUS })
+    return format(date, "yyyy-MM-dd HH:mm", { locale: language === "bn" ? bn : enUS })
   }
 
   // Remove bookmark
@@ -70,8 +70,8 @@ export default function BookmarkPanel({ open, onOpenChange, onEventClick }: Book
     const updatedBookmarks = bookmarks.filter((bookmark) => bookmark.id !== id)
     localStorage.setItem("bookmarked-events", JSON.stringify(updatedBookmarks))
     setBookmarks(updatedBookmarks)
-    toast(language === "zh" ? "已移除收藏" : "Bookmark Removed", {
-      description: language === "zh" ? "事件已从收藏夹中移除" : "Event has been removed from your bookmarks",
+    toast(language === "bn" ? "বুকমার্ক সরানো হয়েছে" : "Bookmark Removed", {
+      description: language === "bn" ? "ইভেন্টটি আপনার বুকমার্ক থেকে সরানো হয়েছে" : "Event has been removed from your bookmarks",
     })
   }
 
@@ -97,7 +97,7 @@ export default function BookmarkPanel({ open, onOpenChange, onEventClick }: Book
         <SheetHeader className="p-4 border-b">
           <SheetTitle className="flex items-center">
             <Bookmark className="mr-2 h-5 w-5" />
-            {language === "en" ? "收藏夹" : "Bookmarks"}
+            {language === "bn" ? "বুকমার্ক" : "Bookmarks"}
           </SheetTitle>
         </SheetHeader>
 
@@ -106,7 +106,7 @@ export default function BookmarkPanel({ open, onOpenChange, onEventClick }: Book
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
-              placeholder="Search bookmarks..."
+              placeholder={language === "bn" ? "বুকমার্ক খুঁজুন..." : "Search bookmarks..."}
               className="pl-8"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -118,9 +118,9 @@ export default function BookmarkPanel({ open, onOpenChange, onEventClick }: Book
               <div className="flex flex-col items-center justify-center h-32 text-center text-muted-foreground">
                 <Bookmark className="h-10 w-10 mb-2 opacity-20" />
                 {searchTerm ? (
-                  <p>"No matching bookmarks found"</p>
+                  <p>{language === "bn" ? "কোন মিলযুক্ত বুকমার্ক পাওয়া যায়নি" : "No matching bookmarks found"}</p>
                 ) : (
-                  <p>"You haven't bookmarked any events yet"</p>
+                  <p>{language === "bn" ? "আপনি এখনও কোন ইভেন্ট বুকমার্ক করেননি" : "You haven't bookmarked any events yet"}</p>
                 )}
               </div>
             ) : (

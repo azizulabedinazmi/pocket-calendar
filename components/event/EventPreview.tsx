@@ -1,40 +1,40 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import {
-  Edit2,
-  Trash2,
-  X,
-  MapPin,
-  Users,
-  Calendar,
-  Bell,
-  AlignLeft,
-  ChevronDown,
-  Share2,
-  Bookmark,
-  Download,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { zhCN, enUS } from "date-fns/locale";
-import { format } from "date-fns";
-import type { CalendarEvent } from "../Calendar";
-import type { Language } from "@/lib/i18n";
-import { translations } from "@/lib/i18n";
-import { cn } from "@/lib/utils";
 import { useCalendar } from "@/components/context/CalendarContext";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogFooter,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { toast } from "sonner";
-import QRCode from "qrcode";
+import type { Language } from "@/lib/i18n";
+import { translations } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
 import { useUser } from "@clerk/nextjs";
+import { format } from "date-fns";
+import { bn, enUS } from "date-fns/locale";
+import {
+  AlignLeft,
+  Bell,
+  Bookmark,
+  Calendar,
+  ChevronDown,
+  Download,
+  Edit2,
+  MapPin,
+  Share2,
+  Trash2,
+  Users,
+  X,
+} from "lucide-react";
+import QRCode from "qrcode";
+import React, { useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
+import type { CalendarEvent } from "../Calendar";
 
 interface EventPreviewProps {
   event: CalendarEvent | null;
@@ -61,7 +61,7 @@ export default function EventPreview({
 }: EventPreviewProps) {
   const { calendars } = useCalendar();
   const t = translations[language];
-  const locale = language === "zh" ? zhCN : enUS;
+  const locale = language === "bn" ? bn : enUS;
   const [participantsOpen, setParticipantsOpen] = useState(false);
   const [shareDialogOpen, setShareDialogOpen] = useState(false);
   // 移除原来的昵称状态
@@ -82,8 +82,8 @@ export default function EventPreview({
     if (open && openShareImmediately) {
       // 若用户未登录则提示先登录，不打开分享对话框
       if (!isSignedIn) {
-        toast(language === "zh" ? "请先登录" : "Please sign in", {
-          description: language === "zh" ? "登录后才能使用分享功能" : "Sign in required to use share function",
+        toast(language === "bn" ? "অনুগ্রহ করে লগইন করুন" : "Please sign in", {
+          description: language === "bn" ? "শেয়ার ফাংশন ব্যবহার করতে লগইন প্রয়োজন" : "Sign in required to use share function",
           variant: "destructive",
         });
       } else {
@@ -133,9 +133,9 @@ export default function EventPreview({
   // 格式化通知时间
   const formatNotificationTime = () => {
     if (event.notification === 0) {
-      return language === "zh" ? "事件开始时" : "At time of event";
+      return language === "bn" ? "ইভেন্টের সময়" : "At time of event";
     }
-    return language === "zh" ? `${event.notification} 分钟前` : `${event.notification} minutes before`;
+    return language === "bn" ? `${event.notification} মিনিট আগে` : `${event.notification} minutes before`;
   };
 
   // 获取参与者头像初始字母
@@ -162,11 +162,8 @@ export default function EventPreview({
       localStorage.setItem("bookmarked-events", JSON.stringify(updatedBookmarks));
       setBookmarks(updatedBookmarks);
       setIsBookmarked(false);
-      toast(language === "zh" ? "已取消收藏" : "Removed from bookmarks", {
-        description:
-          language === "zh"
-            ? "事件已从收藏夹中移除"
-            : "Event has been removed from your bookmarks",
+      toast(language === "bn" ? "বুকমার্ক সরানো হয়েছে" : "Removed from bookmarks", {
+        description: language === "bn" ? "ইভেন্টটি আপনার বুকমার্ক থেকে সরানো হয়েছে" : "Event has been removed from your bookmarks",
       });
     } else {
       const bookmarkData = {
@@ -182,11 +179,8 @@ export default function EventPreview({
       localStorage.setItem("bookmarked-events", JSON.stringify(updatedBookmarks));
       setBookmarks(updatedBookmarks);
       setIsBookmarked(true);
-      toast(language === "zh" ? "已收藏" : "Bookmarked", {
-        description:
-          language === "zh"
-            ? "事件已添加到收藏夹"
-            : "Event has been added to your bookmarks",
+      toast(language === "bn" ? "বুকমার্ক করা হয়েছে" : "Bookmarked", {
+        description: language === "bn" ? "ইভেন্টটি আপনার বুকমার্কে যোগ করা হয়েছে" : "Event has been added to your bookmarks",
       });
     }
   };
@@ -196,8 +190,8 @@ export default function EventPreview({
     if (!event) return;
     if (!user) {
       // 未登录则不允许分享
-      toast(language === "zh" ? "请先登录" : "Please sign in", {
-        description: language === "zh" ? "分享功能仅对登录用户开放" : "Share function available to signed-in users only",
+      toast(language === "bn" ? "অনুগ্রহ করে লগইন করুন" : "Please sign in", {
+        description: language === "bn" ? "শেয়ার ফাংশন ব্যবহার করতে লগইন প্রয়োজন" : "Sign in required to use share function",
         variant: "destructive",
       });
       return;
@@ -270,8 +264,8 @@ export default function EventPreview({
       }
     } catch (error) {
       console.error("Error sharing event:", error);
-      toast(language === "zh" ? "分享失败" : "Share Failed", {
-        description: error instanceof Error ? error.message : language === "zh" ? "未知错误" : "Unknown error",
+      toast(language === "bn" ? "শেয়ার করা হচ্ছে..." : "Sharing...", {
+        description: error instanceof Error ? error.message : language === "bn" ? "অজানা ত্রুটি" : "Unknown error",
         variant: "destructive",
       });
     } finally {
@@ -283,8 +277,8 @@ export default function EventPreview({
   const copyShareLink = () => {
     if (shareLink) {
       navigator.clipboard.writeText(shareLink);
-      toast(language === "zh" ? "链接已复制" : "Link Copied", {
-        description: language === "zh" ? "分享链接已复制到剪贴板" : "Share link copied to clipboard",
+      toast(language === "bn" ? "লিংক কপি করা হয়েছে" : "Link Copied", {
+        description: language === "bn" ? "শেয়ার লিংক কপি করা হয়েছে" : "Share link copied to clipboard",
       });
     }
   };
@@ -317,8 +311,8 @@ export default function EventPreview({
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      toast(language === "zh" ? "二维码已下载" : "QR Code Downloaded", {
-        description: language === "zh" ? "已保存到您的设备" : "Saved to your device",
+      toast(language === "bn" ? "কিউআর কোড ডাউনলোড করা হয়েছে" : "QR Code Downloaded", {
+        description: language === "bn" ? "আপনার ডিভাইসে সংরক্ষিত হয়েছে" : "Saved to your device",
       });
     }
   };
@@ -360,8 +354,8 @@ export default function EventPreview({
                 e.stopPropagation();
                 // 未登录时不允许打开分享对话框
                 if (!isSignedIn) {
-                  toast(language === "zh" ? "请先登录" : "Please sign in", {
-                    description: language === "zh" ? "登录后才能使用分享功能" : "Sign in required to use share function",
+                  toast(language === "bn" ? "অনুগ্রহ করে লগইন করুন" : "Please sign in", {
+                    description: language === "bn" ? "শেয়ার ফাংশন ব্যবহার করতে লগইন প্রয়োজন" : "Sign in required to use share function",
                     variant: "destructive",
                   });
                   return;
@@ -414,7 +408,7 @@ export default function EventPreview({
                 >
                   <p>
                     {event.participants.filter((p) => p.trim() !== "").length}{" "}
-                    {language === "zh" ? "参与者" : "participants"}
+                    {language === "bn" ? "অংশগ্রামী" : "participants"}
                   </p>
                   <ChevronDown
                     className={cn(
@@ -456,8 +450,8 @@ export default function EventPreview({
               <div className="flex-1">
                 <p>{formatNotificationTime()}</p>
                 <p className="text-sm text-muted-foreground">
-                  {language === "zh"
-                    ? `${event.notification} 分钟前 按电子邮件`
+                  {language === "bn"
+                    ? `${event.notification} মিনিট আগে ইমেইল`
                     : `${event.notification} minutes before by email`}
                 </p>
               </div>
@@ -478,14 +472,14 @@ export default function EventPreview({
       <Dialog open={shareDialogOpen} onOpenChange={handleShareDialogChange}>
         <DialogContent className="sm:max-w-md" ref={dialogContentRef} onClick={handleDialogClick}>
           <DialogHeader>
-            <DialogTitle>{language === "zh" ? "分享事件" : "Share Event"}</DialogTitle>
+            <DialogTitle>{language === "bn" ? "ইভেন্ট শেয়ার করুন" : "Share Event"}</DialogTitle>
           </DialogHeader>
           {!shareLink ? (
             <div className="space-y-4 py-2">
               {/* 显示当前用户信息，无需输入昵称 */}
               <div className="space-y-2">
                 <Label htmlFor="shared-by">
-                  {language === "zh" ? "分享" : "Share"}
+                  {language === "bn" ? "শেয়ার" : "Share"}
                 </Label>
                 {/*<Input
                   id="shared-by"
@@ -494,8 +488,8 @@ export default function EventPreview({
                   onClick={(e) => e.stopPropagation()}
                 />*/}
                 <p className="text-sm text-muted-foreground">
-                  {language === "zh"
-                    ? "您将以当前登录身份进行事件分享。"
+                  {language === "bn"
+                    ? "আপনি বর্তমান লগইন আইডি দ্বারা ইভেন্ট শেয়ার করবেন।"
                     : "You will share this event as your current logged-in identity."}
                 </p>
               </div>
@@ -508,7 +502,7 @@ export default function EventPreview({
                     handleShareDialogChange(false);
                   }}
                 >
-                  {language === "zh" ? "取消" : "Cancel"}
+                  {language === "bn" ? "বাতিল" : "Cancel"}
                 </Button>
                 <Button
                   onClick={(e) => {
@@ -539,10 +533,10 @@ export default function EventPreview({
                           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                         ></path>
                       </svg>
-                      {language === "zh" ? "分享中..." : "Sharing..."}
+                      {language === "bn" ? "শেয়ার করা হচ্ছে..." : "Sharing..."}
                     </span>
                   ) : (
-                    <>{language === "zh" ? "分享" : "Share"}</>
+                    <>{language === "bn" ? "শেয়ার করুন" : "Share"}</>
                   )}
                 </Button>
               </DialogFooter>
@@ -551,7 +545,7 @@ export default function EventPreview({
             <div className="space-y-4 py-2">
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="share-link">{language === "zh" ? "分享链接" : "Share Link"}</Label>
+                  <Label htmlFor="share-link">{language === "bn" ? "শেয়ার লিংক" : "Share Link"}</Label>
                   <div className="flex items-center space-x-2">
                     <Input
                       id="share-link"
@@ -571,19 +565,19 @@ export default function EventPreview({
                         copyShareLink();
                       }}
                     >
-                      {language === "zh" ? "复制" : "Copy"}
+                      {language === "bn" ? "কপি করুন" : "Copy"}
                     </Button>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    {language === "zh"
-                      ? "任何拥有此链接的人都可以查看此事件。"
+                    {language === "bn"
+                      ? "এই লিংক দিয়ে যে কেউ ইভেন্ট দেখতে পারে।"
                       : "Anyone with this link can view this event."}
                   </p>
                 </div>
 
                 {qrCodeDataURL && (
                   <div className="mt-4 flex flex-col items-center">
-                    <Label className="mb-2">{language === "zh" ? "二维码" : "QR Code"}</Label>
+                    <Label className="mb-2">{language === "bn" ? "কিউআর কোড" : "QR Code"}</Label>
                     <div className="border p-3 rounded bg-white mb-2">
                       <img
                         src={qrCodeDataURL || "/placeholder.svg"}
@@ -601,11 +595,11 @@ export default function EventPreview({
                       }}
                     >
                       <Download className="mr-2 h-4 w-4" />
-                      {language === "zh" ? "下载二维码" : "Download QR Code"}
+                      {language === "bn" ? "কিউআর কোড ডাউনলোড করুন" : "Download QR Code"}
                     </Button>
                     <p className="text-xs text-muted-foreground text-center mt-2">
-                      {language === "zh"
-                        ? "扫描此二维码可立即查看日程"
+                      {language === "bn"
+                        ? "ইভেন্ট দেখতে এই কিউআর কোড স্ক্যান করুন"
                         : "Scan this QR code to view the event"}
                     </p>
                   </div>
@@ -619,7 +613,7 @@ export default function EventPreview({
                     handleShareDialogChange(false);
                   }}
                 >
-                  {language === "zh" ? "完成" : "Done"}
+                  {language === "bn" ? "সম্পন্ন" : "Done"}
                 </Button>
               </DialogFooter>
             </div>
