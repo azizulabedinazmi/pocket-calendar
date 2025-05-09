@@ -248,19 +248,26 @@ function detectSystemLanguage(): Language {
 }
 
 export function useLanguage(): [Language, (lang: Language) => void] {
-  const [language, setLanguageState] = useState<Language>("en"); // Default to English
+  // During server-side rendering, always return English
+  if (typeof window === "undefined") {
+    return ["en", () => {}];
+  }
+
+  const [language, setLanguageState] = useState<Language>("en");
 
   useEffect(() => {
-    // Initialize with English only
-    setLanguageState("en");
+    const storedLanguage = localStorage.getItem("preferred-language");
+    if (storedLanguage === "en" || storedLanguage === "zh") {
+      setLanguageState(storedLanguage);
+    } else {
+      setLanguageState("en");
+    }
   }, []);
 
   const setLanguage = (lang: Language) => {
-    if (lang === "en") {
-      setLanguageState(lang);
-      localStorage.setItem("preferred-language", lang);
-      window.dispatchEvent(new Event("languagechange"));
-    }
+    setLanguageState(lang);
+    localStorage.setItem("preferred-language", lang);
+    window.dispatchEvent(new Event("languagechange"));
   };
 
   return [language, setLanguage];
