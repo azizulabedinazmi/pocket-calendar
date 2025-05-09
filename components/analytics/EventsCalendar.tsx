@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { format, startOfWeek, addDays, startOfYear, endOfYear, isSameDay, parseISO, getDay, differenceInDays } from 'date-fns';
-import { zhCN } from 'date-fns/locale';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { addDays, differenceInDays, endOfYear, format, getDay, isSameDay, parseISO, startOfWeek, startOfYear } from 'date-fns';
+import React, { useEffect, useState } from 'react';
 
 interface CalendarEvent {
   id: string;
@@ -19,7 +18,7 @@ interface CalendarEvent {
   recurrence: string;
 }
 
-type Language = 'en' | 'zh';
+type Language = 'en';
 
 interface Translations {
   eventsCalendar: string;
@@ -40,15 +39,6 @@ const translations: Record<Language, Translations> = {
     more: 'More',
     weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-  },
-  zh: {
-    eventsCalendar: '事件日历',
-    selectYear: '选择年份',
-    noEvents: '未找到事件',
-    less: '较少',
-    more: '较多',
-    weekdays: ['日', '一', '二', '三', '四', '五', '六'],
-    months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
   }
 };
 
@@ -56,20 +46,11 @@ const EventsCalendar: React.FC = () => {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [availableYears, setAvailableYears] = useState<number[]>([]);
   const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
-  const [language, setLanguage] = useState<Language>('zh'); // 默认中文，稍后会根据系统语言更新
+  const [language, setLanguage] = useState<Language>('en'); // Default to English
   
-  // 检测系统语言并设置组件语言
+  // Update language detection
   useEffect(() => {
-    const detectLanguage = () => {
-      const browserLang = navigator.language.toLowerCase();
-      if (browserLang.startsWith('zh')) {
-        setLanguage('zh');
-      } else {
-        setLanguage('en');
-      }
-    };
-
-    detectLanguage();
+    setLanguage('en'); // Always set to English
   }, []);
   
   const t = translations[language];
