@@ -1,8 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import Link from "next/link"
 import { GithubIcon } from "lucide-react"
+import Link from "next/link"
+import { useEffect, useState } from "react"
 
 export default function AboutPage() {
   const [lang, setLang] = useState<"en" | "zh">("en")
@@ -15,12 +15,12 @@ export default function AboutPage() {
 
   const content = {
     en: {
-      title: "About One Calendar",
-      heading: "One Calendar is designed for the way people actually plan.",
+      title: "About Pocket Calendar",
+      heading: "Pocket Calendar is designed for the way people actually plan.",
       paragraphs: [
-        "Time management shouldn't feel like a chore. That's why we built One Calendar — a clean, simple, and powerful calendar that adapts to your life.",
+        "Time management shouldn't feel like a chore. That's why we built Pocket Calendar — a clean, simple, and powerful calendar that adapts to your life.",
         "We believe great tools should get out of your way. No clutter, no friction — just a fast, intuitive experience that helps you stay focused and in control.",
-        "From personal planning to team collaboration, One Calendar gives you the features you need without the complexity you don’t.",
+        "From personal planning to team collaboration, Pocket Calendar gives you the features you need without the complexity you don’t.",
         "We’re excited to build a better future for time — and we’d love to have you along for the journey."
       ],
       contact: "Want to contribute or get in touch?",
@@ -28,12 +28,12 @@ export default function AboutPage() {
       home: "Back to Home",
     },
     zh: {
-      title: "关于 One Calendar",
+      title: "关于 Pocket Calendar",
       heading: "我们正在打造一个真正符合现代节奏的日历工具。",
       paragraphs: [
-        "管理时间不该是一件麻烦事。One Calendar 致力于打造一个干净、简单而强大的日历，真正贴合你的生活节奏。",
+        "管理时间不该是一件麻烦事。Pocket Calendar 致力于打造一个干净、简单而强大的日历，真正贴合你的生活节奏。",
         "我们相信，优秀的工具应该“隐形”——不打扰、不复杂，只带来快速流畅的体验，帮助你专注当下、掌握全局。",
-        "无论是个人安排，还是团队协作，One Calendar 都提供恰到好处的功能，而不会堆砌无用选项。",
+        "无论是个人安排，还是团队协作，Pocket Calendar 都提供恰到好处的功能，而不会堆砌无用选项。",
         "我们正在重新构想时间的未来，期待你一同加入这段旅程。"
       ],
       contact: "想参与项目或联系我们？",
@@ -92,7 +92,7 @@ export default function AboutPage() {
 
       <footer className="mt-auto py-8 border-t border-black/10 dark:border-white/10 text-gray-600 dark:text-white/70 text-sm px-6">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>&copy; 2025 One Calendar. All rights reserved.</p>
+          <p>&copy; 2025 Pocket Calendar. All rights reserved.</p>
           <div className="flex gap-4">
             <a href="/about" className="hover:text-gray-900 dark:hover:text-white">About</a>
             <a href="/privacy" className="hover:text-gray-900 dark:hover:text-white">Privacy</a>

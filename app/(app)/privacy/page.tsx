@@ -1,8 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import Link from "next/link"
 import { GithubIcon } from "lucide-react"
+import Link from "next/link"
+import { useEffect, useState } from "react"
 
 export default function PrivacyPolicy() {
   const [lang, setLang] = useState<"en" | "zh">("en")
@@ -15,17 +15,17 @@ export default function PrivacyPolicy() {
 
   const content = {
     en: {
-      title: "One Calendar Privacy Policy",
+      title: "Pocket Calendar Privacy Policy",
       lastUpdated: "Last updated: May 2, 2025",
-      intro: "At One Calendar, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and protect your data when you use our services, including our website and application.",
+      intro: "At Pocket Calendar, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and protect your data when you use our services, including our website and application.",
       sections: [
         {
           heading: "1. Information We Collect",
           content: [
             "Account Information: When you sign up using Clerk authentication (via GitHub, Google, or Microsoft), we collect your email address, name, and profile information provided by these services to create and manage your account.",
-            "Calendar Data: Events, schedules, and related data you input into One Calendar are stored to provide our scheduling and collaboration features.",
+            "Calendar Data: Events, schedules, and related data you input into Pocket Calendar are stored to provide our scheduling and collaboration features.",
             "Usage Data: We collect information about how you interact with our services, such as pages visited, features used, and device information (e.g., browser type, IP address).",
-            "Files Uploaded: Any files you upload to One Calendar, stored via Vercel Blob or Misskey Drive, are used solely to enhance your experience, such as attaching documents to events.",
+            "Files Uploaded: Any files you upload to Pocket Calendar, stored via Vercel Blob or Misskey Drive, are used solely to enhance your experience, such as attaching documents to events.",
             "Location Data: We will request to collect your location data to get the weather in your area. This is optional and you can refuse it, but the weather component may not work properly."
           ]
         },
@@ -68,7 +68,7 @@ export default function PrivacyPolicy() {
         {
           heading: "6. Your Rights and Choices",
           content: [
-            "You can access, update, or delete your account information at any time through your One Calendar account settings.",
+            "You can access, update, or delete your account information at any time through your Pocket Calendar account settings.",
             "You can opt out of non-essential communications by adjusting your notification preferences.",
             "If you’re in a region with specific data protection laws (e.g., GDPR or CCPA), you may have additional rights, such as requesting a copy of your data or restricting certain processing. Contact us to exercise these rights."
           ]
@@ -83,7 +83,7 @@ export default function PrivacyPolicy() {
         {
           heading: "8. Children’s Privacy",
           content: [
-            "One Calendar is a simple and safe calendar tool designed to be suitable for users of all ages, including children. Parents or guardians can manage accounts for children to ensure appropriate use.",
+            "Pocket Calendar is a simple and safe calendar tool designed to be suitable for users of all ages, including children. Parents or guardians can manage accounts for children to ensure appropriate use.",
             "We collect and process personal information from children in the same manner as adults, but we encourage parental supervision to ensure privacy and safety."
           ]
         },
@@ -102,20 +102,20 @@ export default function PrivacyPolicy() {
           ]
         }
       ],
-      cta: "Have feedback or want to contribute to One Calendar?",
+      cta: "Have feedback or want to contribute to Pocket Calendar?",
       github: "Visit our GitHub",
       home: "Back to Home"
     },
     zh: {
-      title: "One Calendar 隐私政策",
+      title: "Pocket Calendar 隐私政策",
       lastUpdated: "最后更新：2025年5月2日",
-      intro: "在 One Calendar，我们重视您的隐私，并致力于保护您的个人信息。本隐私政策说明了您使用我们的服务（包括网站和应用程序）时，我们如何收集、使用、存储和保护您的数据。",
+      intro: "在 Pocket Calendar，我们重视您的隐私，并致力于保护您的个人信息。本隐私政策说明了您使用我们的服务（包括网站和应用程序）时，我们如何收集、使用、存储和保护您的数据。",
       sections: [
         {
           heading: "1. 我们收集的信息",
           content: [
             "账户信息：当您通过 Clerk 认证（GitHub、Google 或 Microsoft）注册时，我们会收集这些服务提供的电子邮件地址、姓名和个人资料信息，以创建和管理您的账户。",
-            "日历数据：您在 One Calendar 中输入的事件、日程和其他相关数据将被存储，以提供我们的日程安排和协作功能。",
+            "日历数据：您在 Pocket Calendar 中输入的事件、日程和其他相关数据将被存储，以提供我们的日程安排和协作功能。",
             "使用数据：我们会收集您与我们服务交互的信息，例如访问的页面、使用的功能以及设备信息（例如浏览器类型、IP 地址）。",
             "上传的文件：您通过 Vercel Blob 或 Misskey Drive 上传的任何文件仅用于增强您的使用体验",
             "地点数据：我们会请求收集您的地点数据来获取您地区的天气，当然这是可选的，您可以拒绝它，不过天气组件可能不会正常工作。"
@@ -160,7 +160,7 @@ export default function PrivacyPolicy() {
         {
           heading: "6. 您的权利与选择",
           content: [
-            "您可以随时通过 One Calendar 账户设置访问、更新或删除您的账户信息。",
+            "您可以随时通过 Pocket Calendar 账户设置访问、更新或删除您的账户信息。",
             "您可以通过调整通知偏好来选择退出非必要通信。",
             "如果您所在地区有特定的数据保护法律（例如 GDPR 或 CCPA），您可能拥有额外权利，例如请求数据副本或限制某些处理。请联系我们以行使这些权利。"
           ]
@@ -175,7 +175,7 @@ export default function PrivacyPolicy() {
         {
           heading: "8. 儿童隐私",
           content: [
-            "One Calendar 是一个简单且安全的日历工具，适合包括儿童在内的所有年龄段用户。家长或监护人可以管理儿童的账户，以确保适当使用。",
+            "Pocket Calendar 是一个简单且安全的日历工具，适合包括儿童在内的所有年龄段用户。家长或监护人可以管理儿童的账户，以确保适当使用。",
             "我们以与成人相同的方式收集和处理儿童的个人信息，但我们鼓励家长监督以确保隐私和安全。"
           ]
         },
@@ -194,7 +194,7 @@ export default function PrivacyPolicy() {
           ]
         }
       ],
-      cta: "有反馈或想为 One Calendar 做贡献？",
+      cta: "有反馈或想为 Pocket Calendar 做贡献？",
       github: "访问我们的 GitHub",
       home: "返回首页"
     }
@@ -255,7 +255,7 @@ export default function PrivacyPolicy() {
 
       <footer className="mt-auto py-8 border-t border-black/10 dark:border-white/10 text-gray-600 dark:text-white/70 text-sm px-6">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>&copy; 2025 One Calendar. All rights reserved.</p>
+          <p>&copy; 2025 Pocket Calendar. All rights reserved.</p>
           <div className="flex gap-4">
             <a href="/about" className="hover:text-gray-900 dark:hover:text-white">About</a>
             <a href="/privacy" className="hover:text-gray-900 dark:hover:text-white">Privacy</a>

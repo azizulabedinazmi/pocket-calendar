@@ -1,8 +1,8 @@
-# Security Policy for One Calendar
+# Security Policy for Pocket Calendar
 
 ## Reporting a Vulnerability
 
-At Tech-Art, we take security seriously. If you discover a security vulnerability in One Calendar, please report it as soon as possible. 
+At Tech-Art, we take security seriously. If you discover a security vulnerability in Pocket Calendar, please report it as soon as possible. 
 
 ### How to Report
 
@@ -20,7 +20,7 @@ Please include the following information in your report:
 
 We will acknowledge receipt of your report within 48 hours and aim to provide a detailed response within 14 days. We are committed to working with you to address the vulnerability promptly.
 
-Thank you for helping us keep One Calendar secure!
+Thank you for helping us keep Pocket Calendar secure!
 
 ---
 

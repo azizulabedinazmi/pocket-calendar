@@ -1,5 +1,5 @@
-import { Calendar } from "lucide-react"
 import { LoginForm } from "@/components/account/LoginForm"
+import { Calendar } from "lucide-react"
 
 export default function LoginPage() {
   return (
@@ -19,7 +19,7 @@ export default function LoginPage() {
       <div className="relative z-10 flex w-full max-w-sm flex-col gap-6">
         <a href="/" className="flex items-center gap-2 self-center font-medium">
           <Calendar className="size-4" color="#0066ff" />
-          One Calendar
+          Pocket Calendar
         </a>
         <LoginForm />
       </div>

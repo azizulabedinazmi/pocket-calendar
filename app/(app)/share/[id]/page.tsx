@@ -1,26 +1,23 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { useParams, useRouter } from "next/navigation"
-import { format } from "date-fns"
-import { zhCN, enUS } from "date-fns/locale"
-import { MapPin, Users, Calendar, Bell, AlignLeft, Loader2, Clock, CalendarPlus, ExternalLink } from "lucide-react"
-import { useToast } from "@/components/ui/use-toast"
-import { cn } from "@/lib/utils"
-import { useLanguage } from "@/lib/i18n"
-import { translations } from "@/lib/i18n"
-import { Button } from "@/components/ui/button"
 import { useCalendar } from "@/components/context/CalendarContext"
-import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card"
+import { useToast } from "@/components/ui/use-toast"
+import { translations, useLanguage } from "@/lib/i18n"
+import { cn } from "@/lib/utils"
+import { format } from "date-fns"
+import { enUS, zhCN } from "date-fns/locale"
+import { motion } from "framer-motion"
+import { AlignLeft, Bell, Calendar, CalendarPlus, Clock, ExternalLink, Loader2, MapPin, Users } from "lucide-react"
+import { useParams, useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
 
 
 interface SharedEvent {
@@ -345,7 +342,7 @@ export default function SharedEventPage() {
 </motion.div>
 
       <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
-        {language === "zh" ? "由 One Calendar 提供支持" : "Powered by One Calendar"}
+        {language === "zh" ? "由 Pocket Calendar 提供支持" : "Powered by Pocket Calendar"}
       </p>
     </div>
   )

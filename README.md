@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/icon.svg" width="72">
   
-# One Calendar
+# Pocket Calendar
 
 <p>
 
@@ -23,15 +23,15 @@ A beautifully minimal open-source calendar app to plan your week and life.
 
 </div>
 
-## What is One Calendar?
+## What is Pocket Calendar?
 
-**One Calendar** is a privacy-first, weekly-focused, open-source calendar app, designed to help individuals and teams plan, focus, and stay in sync.
+**Pocket Calendar** is a privacy-first, weekly-focused, open-source calendar app, designed to help individuals and teams plan, focus, and stay in sync.
 
-> Without *One Calendar*, your schedule is scattered. With it, your week feels intentional.
+> Without *Pocket Calendar*, your schedule is scattered. With it, your week feels intentional.
 
-## Why One Calendar?
+## Why Pocket Calendar?
 
-Most calendar tools are cluttered, over-engineered, or locked behind paywalls. One Calendar aims to be:
+Most calendar tools are cluttered, over-engineered, or locked behind paywalls. Pocket Calendar aims to be:
 
 - 🧠 **AI Powered** – AI-first app that streamlines your scheduling.
 - 🕹 **Interactive & Smooth** – Drag, drop, right-click, and edit with ease.

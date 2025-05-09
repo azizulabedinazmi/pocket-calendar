@@ -1,20 +1,20 @@
-import type React from "react"
-import type { Metadata } from "next"
-import "./globals.css"
-import { Toaster } from "@/components/ui/sonner"
 import { CalendarProvider } from "@/components/context/CalendarContext"
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { ClerkProvider } from '@clerk/nextjs'
-import { enUS } from '@clerk/localizations'
-import { GeistSans } from "geist/font/sans"
 import { ThemeProvider } from "@/components/context/theme-provider"
+import { Toaster } from "@/components/ui/sonner"
+import { enUS } from '@clerk/localizations'
+import { ClerkProvider } from '@clerk/nextjs'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { GeistSans } from "geist/font/sans"
+import type { Metadata } from "next"
+import type React from "react"
+import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "One Calendar",
+  title: "Pocket Calendar",
   description: "All your events in one place, beautifully organized.",
   openGraph: {
-    title: "One Calendar",
+    title: "Pocket Calendar",
     description: "All your events in one place, beautifully organized.",
     url: "/",
     images: [
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@One__Cal",
-    title: "One Calendar",
+    site: "@Pocket__Cal",
+    title: "Pocket Calendar",
     description: "All your events in one place, beautifully organized.",
     images: [
       {

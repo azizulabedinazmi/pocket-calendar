@@ -7,7 +7,7 @@ export type Language = "en";
 export const translations = {
   en: {
     calendar: "Calendar",
-    oneCalendar: "One Calendar",
+    oneCalendar: "Pocket Calendar",
     createEvent: "Create Event",
     myCalendars: "My Calendars",
     addNewCalendar: "Add New Calendar",
@@ -124,7 +124,7 @@ export const translations = {
     dateAndTime: "Date and Time",
     copy: "Copy",
     eventDuplicated: "Event duplicated",
-    welcomeToOneCalendar: "Welcome to One Calendar",
+    welcomeToOneCalendar: "Welcome to Pocket Calendar",
     powerfulCalendarApp:
       "This is a powerful calendar application that helps you manage your schedule and import/export calendar data.",
     basicFeatures: "Basic Features",
@@ -242,7 +242,7 @@ export const translations = {
   },
   zh: {
     calendar: "日历",
-    oneCalendar: "One Calendar",
+    oneCalendar: "Pocket Calendar",
     createEvent: "创建日程",
     myCalendars: "我的日历",
     addNewCalendar: "添加新日历",
@@ -358,7 +358,7 @@ export const translations = {
     dateAndTime: "日期和时间",
     copy: "副本",
     eventDuplicated: "事件已复制",
-    welcomeToOneCalendar: "欢迎使用One Calendar",
+    welcomeToOneCalendar: "欢迎使用Pocket Calendar",
     powerfulCalendarApp: "这是一个功能强大的日历应用，帮助您管理日程并导入/导出日历数据。",
     basicFeatures: "基础功能",
     importExportFeatures: "导入与导出",

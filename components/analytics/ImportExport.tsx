@@ -1,19 +1,19 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Input } from "@/components/ui/input"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
-import { toast } from "sonner"
-import { Download, Upload, CalendarIcon, ExternalLink, AlertCircle } from "lucide-react"
-import type { CalendarEvent } from "../Calendar"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { translations, useLanguage } from "@/lib/i18n"
+import { AlertCircle, CalendarIcon, Download, ExternalLink, Upload } from "lucide-react"
+import { useEffect, useState } from "react"
+import { toast } from "sonner"
+import type { CalendarEvent } from "../Calendar"
 
 interface ImportExportProps {
   events: CalendarEvent[]
@@ -200,7 +200,7 @@ ${rawContent.substring(0, 500)}...`)
   const generateICSFile = (events: CalendarEvent[]): string => {
     let icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//One Calendar//NONSGML v1.0//EN
+PRODID:-//Pocket Calendar//NONSGML v1.0//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 `

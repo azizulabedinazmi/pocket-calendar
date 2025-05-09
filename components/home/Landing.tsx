@@ -1,17 +1,15 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
-import { useUser } from "@clerk/nextjs"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Badge } from "@/components/ui/badge"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
-import { GithubIcon, CloudIcon, Share2Icon, BarChart3Icon, SunIcon, KeyboardIcon, ImportIcon, ExternalLinkIcon, MoonIcon } from "lucide-react"
+import { useUser } from "@clerk/nextjs"
+import { BarChart3Icon, CloudIcon, GithubIcon, ImportIcon, KeyboardIcon, Share2Icon, SunIcon } from "lucide-react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
 import { PixelatedBackground } from "./PixelatedBG"
 
 export default function LandingPage() {
@@ -61,8 +59,8 @@ export default function LandingPage() {
       <header className="sticky top-6 z-50 px-4 mx-auto flex justify-center">
         <div className="w-auto max-w-4xl flex items-center justify-between rounded-xl px-2 py-1 bg-black/5 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/20">
           <div className="flex items-center gap-2 py-2 px-3">
-            <Image src="/icon.svg" alt="One Calendar" width={24} height={24} />
-            {/*<span className="font-semibold text-lg text-gray-900 dark:text-white">One Calendar</span>*/}
+            <Image src="/icon.svg" alt="Pocket Calendar" width={24} height={24} />
+            {/*<span className="font-semibold text-lg text-gray-900 dark:text-white">Pocket Calendar</span>*/}
           </div>
           <nav className="hidden md:flex items-center gap-6 px-3 mr-32">
             <a href="/about" className="text-sm text-gray-700 hover:text-gray-900 dark:text-white/70 dark:hover:text-white">About</a>
@@ -146,7 +144,7 @@ export default function LandingPage() {
              Time-Saving AI Calendar,<br />Designed for Efficiency
           </h1>
           <p className="text-xl text-gray-700 dark:text-white/70 max-w-2xl mx-auto mb-6">
-            One Calendar is an AI-first app that streamlines your scheduling.
+            Pocket Calendar is an AI-first app that streamlines your scheduling.
           </p>
           <div className="flex justify-center mb-16">
             <Button
@@ -159,14 +157,14 @@ export default function LandingPage() {
           <div className="rounded-lg overflow-hidden border border-black/10 dark:border-white/20 bg-black/5 dark:bg-white/5 backdrop-blur-md shadow-2xl max-w-4xl mx-auto">
             <Image
               src="/Banner.jpg"
-              alt="One Calendar Preview"
+              alt="Pocket Calendar Preview"
               width={1200}
               height={675}
               className="w-full object-cover dark:hidden"
             />
             <Image
               src="/Banner-dark.jpg"
-              alt="One Calendar Preview - Dark"
+              alt="Pocket Calendar Preview - Dark"
               width={1200}
               height={675}
               className="w-full object-cover hidden dark:block"
@@ -247,7 +245,7 @@ export default function LandingPage() {
                 <Badge className="mb-4 bg-pink-100 dark:bg-pink-500/20 text-pink-700 dark:text-pink-300 hover:bg-pink-500/30 border-none">Data Transfer</Badge>
                 <h2 className="text-3xl font-bold mb-4">Import & Export</h2>
                 <p className="text-gray-700 dark:text-white/70">
-                  Easily move data in and out of One Calendar. Compatible with all standard calendar formats.
+                  Easily move data in and out of Pocket Calendar. Compatible with all standard calendar formats.
                 </p>
               </TabsContent>
               <div className="order-first md:order-last relative">
@@ -340,7 +338,7 @@ export default function LandingPage() {
               <CardContent className="p-6">
                 <ImportIcon className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Import & Export</h3>
-                <p className="text-gray-700 dark:text-white/70 text-sm">Easily move data in and out of One Calendar.</p>
+                <p className="text-gray-700 dark:text-white/70 text-sm">Easily move data in and out of Pocket Calendar.</p>
               </CardContent>
             </Card>
           </div>
@@ -354,10 +352,10 @@ export default function LandingPage() {
     <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="item-1" className="border-b border-black/10 dark:border-white/10">
         <AccordionTrigger className="py-4 text-left hover:no-underline">
-          <span className="text-lg font-medium">What's One Calendar?</span>
+          <span className="text-lg font-medium">What's Pocket Calendar?</span>
         </AccordionTrigger>
         <AccordionContent className="pb-4 text-gray-700 dark:text-white/70">
-          One Calendar is an AI-driven calendar app designed to simplify your schedule and manage your time with smart features and a user-friendly interface.
+          Pocket Calendar is an AI-driven calendar app designed to simplify your schedule and manage your time with smart features and a user-friendly interface.
         </AccordionContent>
       </AccordionItem>
       
@@ -366,7 +364,7 @@ export default function LandingPage() {
           <span className="text-lg font-medium">How do I import my existing calendar?</span>
         </AccordionTrigger>
         <AccordionContent className="pb-4 text-gray-700 dark:text-white/70">
-          One Calendar supports importing data from Apple Calendar, Outlook and Google Calendar. Just download your calendar ics file in their settings and go to One Calendar's analysis page to import it.
+          Pocket Calendar supports importing data from Apple Calendar, Outlook and Google Calendar. Just download your calendar ics file in their settings and go to Pocket Calendar's analysis page to import it.
         </AccordionContent>
       </AccordionItem>
       
@@ -381,7 +379,7 @@ export default function LandingPage() {
       
       <AccordionItem value="item-4" className="border-b border-black/10 dark:border-white/10">
         <AccordionTrigger className="py-4 text-left hover:no-underline">
-          <span className="text-lg font-medium">What analytical features does One Calendar provide?</span>
+          <span className="text-lg font-medium">What analytical features does Pocket Calendar provide?</span>
         </AccordionTrigger>
         <AccordionContent className="pb-4 text-gray-700 dark:text-white/70">
           Our analytics can help you understand how you spend your time, provide insights into your most productive day and most productive hours, and identify patterns that can improve efficiency. These insights can help you plan and optimize your schedule more intelligently.
@@ -393,7 +391,7 @@ export default function LandingPage() {
           <span className="text-lg font-medium">Is there a free plan available?</span>
         </AccordionTrigger>
         <AccordionContent className="pb-4 text-gray-700 dark:text-white/70">
-          Of course! One Calendar supports free use, our product is free and open-sourced. Suitable for any user, we also provide support, you can contact us to get it.
+          Of course! Pocket Calendar supports free use, our product is free and open-sourced. Suitable for any user, we also provide support, you can contact us to get it.
         </AccordionContent>
       </AccordionItem>
 
@@ -416,7 +414,7 @@ export default function LandingPage() {
           <div className="text-center">
             <h2 className="text-4xl md:text-5xl font-medium mb-6 dark:text-white">Ready to transform your scheduling?</h2>
             <p className="text-xl text-gray-700 dark:text-white/70 mb-8 max-w-2xl mx-auto">
-              Join thousands of users who've streamlined their calendar management with One Calendar.
+              Join thousands of users who've streamlined their calendar management with Pocket Calendar.
             </p>
             <Button
               onClick={handleGetStarted}
@@ -431,7 +429,7 @@ export default function LandingPage() {
       {/* Original Footer */}
       <footer className="mt-auto py-8 border-t border-black/10 dark:border-white/10 text-gray-600 dark:text-white/70 text-sm px-6">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>&copy; 2025 One Calendar. All rights reserved.</p>
+          <p>&copy; 2025 Pocket Calendar. All rights reserved.</p>
           <div className="flex gap-4">
             <a href="/about" className="hover:text-gray-900 dark:hover:text-white">About</a>
             <a href="/privacy" className="hover:text-gray-900 dark:hover:text-white">Privacy</a>

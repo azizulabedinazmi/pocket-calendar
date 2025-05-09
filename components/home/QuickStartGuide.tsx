@@ -1,25 +1,24 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
   DialogDescription,
-  DialogFooter,
+  DialogHeader,
+  DialogTitle
 } from "@/components/ui/dialog"
+import { useLanguage } from "@/hooks/useLanguage"
 import { useLocalStorage } from "@/hooks/useLocalStorage"
 import { translations } from "@/lib/i18n"
-import { useLanguage } from "@/hooks/useLanguage"
 import {
-  CloudIcon,
-  Share2Icon,
   BarChart3Icon,
-  SunIcon,
-  KeyboardIcon,
+  CloudIcon,
   ImportIcon,
+  KeyboardIcon,
+  Share2Icon,
+  SunIcon,
 } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export default function QuickStartGuide() {
   const [open, setOpen] = useState(false)
@@ -93,7 +92,7 @@ export default function QuickStartGuide() {
               <Feature
                 icon={<ImportIcon className="h-6 w-6 text-pink-500" />}
                 title="Import & Export"
-                description="Easily move data in and out of One Calendar."
+                description="Easily move data in and out of Pocket Calendar."
               />
             </section>
 

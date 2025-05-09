@@ -20,12 +20,12 @@ export async function generateMetadata(
     const eventTitle = typeof event.title === "string" ? event.title : "Untitled"
 
     return {
-      title: `${eventTitle} | One Calendar`,
+      title: `${eventTitle} | Pocket Calendar`,
     }
   } catch (err) {
     console.error("[generateMetadata error]", err)
     return {
-      title: "One Calendar",
+      title: "Pocket Calendar",
     }
   }
 }
