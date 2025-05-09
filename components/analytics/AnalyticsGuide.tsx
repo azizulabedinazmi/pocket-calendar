@@ -1,23 +1,23 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
   DialogDescription,
   DialogFooter,
+  DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
 import { useLocalStorage } from "@/hooks/useLocalStorage"
-import { translations, useLanguage } from "@/lib/i18n"
+import { translations } from "@/lib/i18n"
+import { useEffect, useState } from "react"
 
 export default function AnalyticsGuide() {
   const [open, setOpen] = useState(false)
-  const [hasSeenGuide, setHasSeenGuide] = useLocalStorage("has-seen-analytics-guide", true) // 默认设为true，不显示弹窗
-  const [language] = useLanguage() // 使用useLanguage替代直接从localStorage读取
-  const t = translations[language]
+  const [hasSeenGuide, setHasSeenGuide] = useLocalStorage("has-seen-analytics-guide", true) // Default to true, dialog won't show
+  const language = "en" // Set language default to English
+  const t = translations[language] // Use English translations
 
   useEffect(() => {
     if (!hasSeenGuide) {
@@ -54,4 +54,3 @@ export default function AnalyticsGuide() {
     </Dialog>
   )
 }
-
