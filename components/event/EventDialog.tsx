@@ -389,10 +389,8 @@ export default function EventDialog({
     const fullStartDate = getFullStartDate();
     const fullEndDate = getFullEndDate();
 
-    console.log('Creating event with notification:', {
-      startDate: fullStartDate,
-      notificationMinutes,
-    });
+    // Calculate the notification time
+    const notificationTime = new Date(fullStartDate.getTime() - (notificationMinutes * 60 * 1000));
 
     const eventData: CalendarEvent = {
       id: event?.id || Date.now().toString() + Math.random().toString(36).substring(2, 9),
@@ -407,12 +405,11 @@ export default function EventDialog({
         .map((p) => p.trim())
         .filter(Boolean),
       notification: notificationMinutes,
+      notificationTime: notificationTime.getTime(),
       description,
       color,
       calendarId: selectedCalendar || (calendars.length > 0 ? calendars[0]?.id : "1"),
     }
-
-    console.log('Saving event:', eventData);
 
     if (event) {
       onEventUpdate(eventData)
