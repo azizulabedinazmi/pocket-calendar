@@ -41,7 +41,7 @@ export default function Settings({
   enableShortcuts,
   setEnableShortcuts,
 }: SettingsProps) {
-  const { setTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
   const t = translations[language]
 
   // Replace the timezones array with GMT formatted timezones
@@ -98,18 +98,18 @@ export default function Settings({
           <div className="space-y-6 py-4">
             <div className="space-y-2">
               <Label htmlFor="theme">{language === "bn" ? "থিম" : "Theme"}</Label>
-              <Select>
+              <Select value={theme} onValueChange={setTheme}>
                 <SelectTrigger>
                   <SelectValue placeholder="Theme" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="light" onClick={() => setTheme("light")}>
+                  <SelectItem value="light">
                     {language === "bn" ? "হালকা" : "Light"}
                   </SelectItem>
-                  <SelectItem value="dark" onClick={() => setTheme("dark")}>
+                  <SelectItem value="dark">
                     {language === "bn" ? "গাঢ়" : "Dark"}
                   </SelectItem>
-                  <SelectItem value="system" onClick={() => setTheme("system")}>
+                  <SelectItem value="system">
                     {language === "bn" ? "সিস্টেম" : "System"}
                   </SelectItem>
                 </SelectContent>
