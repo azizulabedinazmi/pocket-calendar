@@ -38,6 +38,7 @@ export interface CalendarEvent {
   location?: string
   participants: string[]
   notification: number
+  notificationTime?: number | null
   description?: string
   color: string
   calendarId: string
