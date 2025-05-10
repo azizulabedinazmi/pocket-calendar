@@ -58,7 +58,6 @@
     "motion": "latest",
     "next": "15.3.1",
     "next-themes": "latest",
-    "nodemailer": "^7.0.3",
     "qrcode": "latest",
     "react": "^18",
     "react-day-picker": "8.10.1",
