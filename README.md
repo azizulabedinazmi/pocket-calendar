@@ -127,25 +127,25 @@ GROQ_API_KEY=your-api-key
 
 This project is developed by:
 
-<div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 2rem 0;">
-  <div style="text-align: center;">
-    <img src="https://github.com/azizulabedinazmi.png" width="150" style="border-radius: 50%;">
+<div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 2rem 0;">
+  <div style="text-align: center; flex: 1; min-width: 200px;">
+    <img src="https://github.com/azizulabedinazmi.png" width="100" style="border-radius: 50%;">
     <br>
     <a href="https://github.com/azizulabedinazmi">Azizul Abedin Azmi</a>
     <br>
     <small>Lead Developer</small>
   </div>
   
-  <div style="text-align: center;">
-    <img src="https://github.com/Tanzila-Afrin.png" width="150" style="border-radius: 50%;">
+  <div style="text-align: center; flex: 1; min-width: 200px;">
+    <img src="https://github.com/Tanzila-Afrin.png" width="100" style="border-radius: 50%;">
     <br>
     <a href="https://github.com/Tanzila-Afrin">Tanzila Afrin</a>
     <br>
     <small></small>
   </div>
   
-  <div style="text-align: center;">
-    <img src="https://github.com/isratjahan829.png" width="150" style="border-radius: 50%;">
+  <div style="text-align: center; flex: 1; min-width: 200px;">
+    <img src="https://github.com/isratjahan829.png" width="100" style="border-radius: 50%;">
     <br>
     <a href="https://github.com/isratjahan829">Ishrat Jahan</a>
     <br>
