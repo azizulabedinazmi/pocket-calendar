@@ -377,7 +377,7 @@ export default function EventDialog({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate form data
+    // 验证表单数据
     if (!validateForm()) {
       return;
     }
@@ -389,11 +389,6 @@ export default function EventDialog({
 
     const fullStartDate = getFullStartDate();
     const fullEndDate = getFullEndDate();
-
-    // Calculate notification time
-    const notificationTime = notificationMinutes > 0 
-      ? new Date(fullStartDate.getTime() - notificationMinutes * 60000).getTime()
-      : null;
 
     const eventData: CalendarEvent = {
       id: event?.id || Date.now().toString() + Math.random().toString(36).substring(2, 9),
@@ -408,7 +403,6 @@ export default function EventDialog({
         .map((p) => p.trim())
         .filter(Boolean),
       notification: notificationMinutes,
-      notificationTime,
       description,
       color,
       calendarId: selectedCalendar || (calendars.length > 0 ? calendars[0]?.id : "1"),

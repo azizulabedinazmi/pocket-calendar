@@ -52,14 +52,9 @@ export const checkPendingNotifications = () => {
   const pendingEvents = getPendingEvents(now);
 
   pendingEvents.forEach((event) => {
-    // Only send notifications if there are participants
-    if (event.participants && event.participants.length > 0) {
-      sendEmailNotification(event);
-    }
-    
-    // Always show toast and play sound for the current user
     triggerNotification(event);
     showToast(event);
+    sendEmailNotification(event);
     
     // Remove the notification time after triggering to prevent duplicate notifications
     const events = JSON.parse(localStorage.getItem("events") || "[]");
@@ -78,9 +73,7 @@ const getPendingEvents = (currentTime: number) => {
   const events = JSON.parse(localStorage.getItem("events") || "[]");
   return events.filter((event: any) => {
     // Check if the event has a notification time and if it's time to notify
-    return event.notificationTime && 
-           event.notificationTime <= currentTime && 
-           event.notificationTime > currentTime - 60000; // Only notify if within the last minute
+    return event.notificationTime && event.notificationTime <= currentTime;
   });
 };
 
