@@ -272,7 +272,7 @@ export default function TermsOfService() {
             <a href="/about" className="hover:text-gray-900 dark:hover:text-white">About</a>
             <a href="/privacy" className="hover:text-gray-900 dark:hover:text-white">Privacy</a>
             <a href="/terms" className="hover:text-gray-900 dark:hover:text-white">Terms</a>
-            <a href="https://github.com/EvanTechDev/One-Calendar" target="_blank" rel="noopener" className="flex items-center gap-1 hover:text-gray-900 dark:hover:text-white">
+            <a href="https://github.com/azizulabedinazmi/pocket-calendar" target="_blank" rel="noopener" className="flex items-center gap-1 hover:text-gray-900 dark:hover:text-white">
               <GithubIcon className="w-4 h-4" />
             </a>
             <a href="https://x.com/One__Cal" target="_blank" className="flex items-center gap-1 hover:text-gray-900 dark:hover:text-white">
