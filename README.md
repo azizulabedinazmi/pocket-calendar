@@ -126,9 +126,32 @@ GROQ_API_KEY=your-api-key
 ## 👥 The Team
 
 This project is developed by:
-- [Azizul Abedin Azmi](https://github.com/azizulabedinazmi) - Lead Developer
-- [Tanzila Afrin](https://github.com/Tanzila-Afrin) - 
-- [Ishrat Jahan](https://github.com/isratjahan829) - 
+
+<div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 2rem 0;">
+  <div style="text-align: center;">
+    <img src="https://github.com/azizulabedinazmi.png" width="150" style="border-radius: 50%;">
+    <br>
+    <a href="https://github.com/azizulabedinazmi">Azizul Abedin Azmi</a>
+    <br>
+    <small>Lead Developer</small>
+  </div>
+  
+  <div style="text-align: center;">
+    <img src="https://github.com/Tanzila-Afrin.png" width="150" style="border-radius: 50%;">
+    <br>
+    <a href="https://github.com/Tanzila-Afrin">Tanzila Afrin</a>
+    <br>
+    <small></small>
+  </div>
+  
+  <div style="text-align: center;">
+    <img src="https://github.com/isratjahan829.png" width="150" style="border-radius: 50%;">
+    <br>
+    <a href="https://github.com/isratjahan829">Ishrat Jahan</a>
+    <br>
+    <small></small>
+  </div>
+</div>
 
 We are a team of passionate developers who love creating clean, open-source tools.
 
@@ -147,7 +170,7 @@ This project wouldn't be possible without these awesome services:
 
 ## 📄 License
 
-This project is licensed under the GNU General Public License v3.0 (GPL-3.0).  
+This project is licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).  
 See the [LICENSE](./LICENSE) file for details.
 
 
