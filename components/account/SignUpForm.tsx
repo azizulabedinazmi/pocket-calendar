@@ -1,16 +1,16 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 import { useSignUp } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -68,21 +68,40 @@ export function SignUpForm({
           return;
         }
 
-        await signUp.create({
+        // Create the signup first
+        const result = await signUp.create({
           firstName: formData.firstName,
           lastName: formData.lastName,
           emailAddress: formData.email,
           password: formData.password,
         });
-        await signUp.prepareEmailAddressVerification();
-        setStep("verification");
+
+        // Only prepare verification if signup was successful
+        if (result.status === "needs_email_verification") {
+          await signUp.prepareEmailAddressVerification();
+          setStep("verification");
+        } else {
+          setError("Failed to create account. Please try again.");
+        }
       } else {
-        const completeSignUp = await signUp.attemptEmailAddressVerification({
-          code: formData.code,
-        });
-        if (completeSignUp.status === "complete") {
-          await setActive({ session: completeSignUp.createdSessionId });
-          router.push("/");
+        try {
+          const completeSignUp = await signUp.attemptEmailAddressVerification({
+            code: formData.code,
+          });
+          
+          if (completeSignUp.status === "complete") {
+            await setActive({ session: completeSignUp.createdSessionId });
+            router.push("/");
+          } else {
+            setError("Verification failed. Please try again.");
+          }
+        } catch (verifyErr: any) {
+          // Handle specific verification errors
+          if (verifyErr.errors?.[0]?.code === "verification_already_verified") {
+            setError("This verification code has already been used. Please request a new code.");
+          } else {
+            setError(verifyErr.errors?.[0]?.longMessage || "Verification failed. Please try again.");
+          }
         }
       }
     } catch (err: any) {
