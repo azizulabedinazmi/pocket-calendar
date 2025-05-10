@@ -5,12 +5,12 @@
 
 <p>
 
-<a href="https://vercel.com/tech-art/one-calendar" target="_blank"><img src="https://vercelbadge.vercel.app/api/EvanTechDev/One-Calendar?style=flat-square" alt="Vercel Project Status"></a>
-<a href="https://github.com/azizulabedinazmi/pocket-calendar/blob/master/LICENSE" target="blank"><img src="https://img.shields.io/github/license/EvanTechDev/One-Calendar?style=flat-square" alt="license"></a>
-<a href="https://github.com/azizulabedinazmi/pocket-calendar/fork" target="blank"><img src="https://img.shields.io/github/forks/EvanTechDev/One-Calendar?style=flat-square" alt="forks"></a>
-<a href="https://github.com/azizulabedinazmi/pocket-calendar/stargazers" target="blank"><img src="https://img.shields.io/github/stars/EvanTechDev/One-Calendar?style=flat-square" alt="stars"></a>
-<a href="https://github.com/azizulabedinazmi/pocket-calendar/issues" target="blank"><img src="https://img.shields.io/github/issues/EvanTechDev/One-Calendar?style=flat-square" alt="issues"></a>
-<a href="https://github.com/azizulabedinazmi/pocket-calendar/pulls" target="blank"><img src="https://img.shields.io/github/issues-pr/EvanTechDev/One-Calendar?style=flat-square" alt="pull-requests"></a>
+<a href="https://vercel.com/tech-art/one-calendar" target="_blank"><img src="https://vercelbadge.vercel.app/api/azizulabedinazmi/pocket-calendar?style=flat-square" alt="Vercel Project Status"></a>
+<a href="https://github.com/azizulabedinazmi/pocket-calendar/blob/master/LICENSE" target="blank"><img src="https://img.shields.io/github/license/azizulabedinazmi/pocket-calendar?style=flat-square" alt="license"></a>
+<a href="https://github.com/azizulabedinazmi/pocket-calendar/fork" target="blank"><img src="https://img.shields.io/github/forks/azizulabedinazmi/pocket-calendar?style=flat-square" alt="forks"></a>
+<a href="https://github.com/azizulabedinazmi/pocket-calendar/stargazers" target="blank"><img src="https://img.shields.io/github/stars/azizulabedinazmi/pocket-calendar?style=flat-square" alt="stars"></a>
+<a href="https://github.com/azizulabedinazmi/pocket-calendar/issues" target="blank"><img src="https://img.shields.io/github/issues/azizulabedinazmi/pocket-calendar?style=flat-square" alt="issues"></a>
+<a href="https://github.com/azizulabedinazmi/pocket-calendar/pulls" target="blank"><img src="https://img.shields.io/github/issues-pr/azizulabedinazmi/pocket-calendar?style=flat-square" alt="pull-requests"></a>
 
 </p>
 
