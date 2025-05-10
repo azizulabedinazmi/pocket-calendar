@@ -8,7 +8,7 @@ const notificationSounds: Record<NOTIFICATION_SOUNDS, string> = {
   telegram: "https://cdn.xyehr.cn/source/Voicy_Telegram_notification.mp3",
 };
 
-// 清除所有的通知计时器
+// Clear all notification timers
 export const clearAllNotificationTimers = () => {
   if (notificationInterval) {
     clearInterval(notificationInterval);
@@ -16,7 +16,37 @@ export const clearAllNotificationTimers = () => {
   }
 };
 
-// 检查待处理的通知
+// Send email notification
+const sendEmailNotification = async (event: any) => {
+  try {
+    const response = await fetch('/api/email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        to: event.participants.join(', '),
+        subject: `Reminder: ${event.title}`,
+        html: `
+          <h2>Event Reminder</h2>
+          <p><strong>Event:</strong> ${event.title}</p>
+          <p><strong>Time:</strong> ${new Date(event.startDate).toLocaleString()}</p>
+          <p><strong>Location:</strong> ${event.location || 'No location specified'}</p>
+          ${event.description ? `<p><strong>Description:</strong> ${event.description}</p>` : ''}
+          <p>This is a reminder that this event will start in ${event.notification} minutes.</p>
+        `,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to send email notification');
+    }
+  } catch (error) {
+    console.error('Error sending email notification:', error);
+  }
+};
+
+// Check pending notifications
 export const checkPendingNotifications = () => {
   const now = Date.now();
   const pendingEvents = getPendingEvents(now);
@@ -24,6 +54,7 @@ export const checkPendingNotifications = () => {
   pendingEvents.forEach((event) => {
     triggerNotification(event);
     showToast(event);
+    sendEmailNotification(event);
     
     // Remove the notification time after triggering to prevent duplicate notifications
     const events = JSON.parse(localStorage.getItem("events") || "[]");
@@ -37,7 +68,7 @@ export const checkPendingNotifications = () => {
   });
 };
 
-// 获取待处理的事件
+// Get pending events
 const getPendingEvents = (currentTime: number) => {
   const events = JSON.parse(localStorage.getItem("events") || "[]");
   return events.filter((event: any) => {
@@ -46,20 +77,19 @@ const getPendingEvents = (currentTime: number) => {
   });
 };
 
-// 播放通知声音
+// Play notification sound
 const triggerNotification = (event: any) => {
   const sound = notificationSounds["telegram"];
   new Audio(sound).play();
 };
 
-// 显示 Toast 通知
+// Show toast notification
 const showToast = (event: any) => {
   toast(`${event.title}`, {
     description: event.description || "No content",
     duration: 4000,
   });
 };
-
 
 export const startNotificationChecking = () => {
   if (!notificationInterval) {
