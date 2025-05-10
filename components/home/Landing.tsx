@@ -86,12 +86,6 @@ export default function LandingPage() {
               </svg>
               <span className="text-sm text-gray-700 dark:text-white/70">GitHub</span>
             </a>
-            <a href="https://x.com/One__Cal" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
-              <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
-              </svg>
-              <span className="text-sm text-gray-700 dark:text-white/70">X</span>
-            </a>
             <div className="border-t border-gray-200 dark:border-gray-700 my-1"></div>
             <a href="/privacy" className="flex items-center px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
               <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -437,11 +431,7 @@ export default function LandingPage() {
             <a href="https://github.com/azizulabedinazmi/pocket-calendar" target="_blank" rel="noopener" className="flex items-center gap-1 hover:text-gray-900 dark:hover:text-white">
               <GithubIcon className="w-4 h-4" />
             </a>
-            <a href="https://x.com/One__Cal" target="_blank" className="flex items-center gap-1 hover:text-gray-900 dark:hover:text-white">
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 0 32 32">
-                <path fill="currentColor" d="M 4.0175781 4 L 13.091797 17.609375 L 4.3359375 28 L 6.9511719 28 L 14.246094 19.34375 L 20.017578 28 L 20.552734 28 L 28.015625 28 L 18.712891 14.042969 L 27.175781 4 L 24.560547 4 L 17.558594 12.310547 L 12.017578 4 L 4.0175781 4 z M 7.7558594 6 L 10.947266 6 L 24.279297 26 L 21.087891 26 L 7.7558594 6 z"></path>
-              </svg>
-            </a>
+
           </div>
         </div>
       </footer>
