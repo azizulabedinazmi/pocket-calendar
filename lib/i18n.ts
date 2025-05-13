@@ -239,6 +239,10 @@ export const translations = {
     qrCodeDownloaded: "QR Code Downloaded",
     savedToDevice: "Saved to your device",
     scanQRCodeToView: "Scan this QR code to view the event",
+    autoSyncEnabled: "Auto-Sync Enabled",
+    autoSyncEnabledDesc: "Your data will be automatically synced every 5 minutes",
+    autoSyncDisabled: "Auto-Sync Disabled",
+    autoSyncDisabledDesc: "Your data will no longer be automatically synced",
   },
   bn: {
     calendar: "ক্যালেন্ডার",
@@ -472,8 +476,12 @@ export const translations = {
     qrCode: "QR Code",
     downloadQRCode: "Download QR Code",
     qrCodeDownloaded: "QR Code Downloaded",
-    savedToDevice: "Saved to your device",
-    scanQRCodeToView: "Scan this QR code to view the event",
+    savedToDevice: "আপনার ডিভাইসে সংরক্ষিত",
+    scanQRCodeToView: "ইভেন্ট দেখতে এই QR কোডটি স্ক্যান করুন",
+    autoSyncEnabled: "অটো-সিঙ্ক সক্রিয় করা হয়েছে",
+    autoSyncEnabledDesc: "আপনার ডেটা প্রতি ৫ মিনিটে স্বয়ংক্রিয়ভাবে সিঙ্ক করা হবে",
+    autoSyncDisabled: "অটো-সিঙ্ক নিষ্ক্রিয় করা হয়েছে",
+    autoSyncDisabledDesc: "আপনার ডেটা আর স্বয়ংক্রিয়ভাবে সিঙ্ক করা হবে না",
   },
 }
 
@@ -537,4 +545,21 @@ export function useLanguage(): [Language, (lang: Language) => void] {
 
   return [language, setLanguage]
 }
+
+// Remove duplicate properties
+const removeDuplicates = (obj: any) => {
+  const seen = new Set();
+  return Object.fromEntries(
+    Object.entries(obj).filter(([key]) => {
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+  );
+};
+
+// Clean up translations
+Object.keys(translations).forEach(lang => {
+  translations[lang] = removeDuplicates(translations[lang]);
+});
 

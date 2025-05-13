@@ -40,6 +40,8 @@ export default function UserProfileButton() {
   const [clerkUserId, setClerkUserId] = useState<string | null>(null);
   const router = useRouter()
   const [syncInterval, setSyncInterval] = useState<NodeJS.Timeout | null>(null);
+  const [lastSyncTime, setLastSyncTime] = useState<Date | null>(null);
+  const [isAutoSyncEnabled, setIsAutoSyncEnabled] = useState(false);
   const [restoreInterval, setRestoreInterval] = useState<NodeJS.Timeout | null>(null);
   const [isRestoring, setIsRestoring] = useState(false);
   const [lastRestoreTime, setLastRestoreTime] = useState<Date | null>(null);
@@ -307,6 +309,74 @@ useEffect(() => {
   setIsAutoBackupEnabled(isEnabled);
 }, []);
 
+// Initialize auto-sync from localStorage
+useEffect(() => {
+  const savedAutoSync = localStorage.getItem("auto-sync-enabled");
+  if (savedAutoSync === "true") {
+    setIsAutoSyncEnabled(true);
+    startAutoSync();
+  }
+}, []);
+
+const startAutoSync = () => {
+  setIsAutoSyncEnabled(true);
+  localStorage.setItem("auto-sync-enabled", "true");
+  
+  // Clear any existing interval
+  if (syncInterval) {
+    clearInterval(syncInterval);
+  }
+
+  // Set up periodic sync every 5 minutes
+  const interval = setInterval(() => {
+    performAutoBackup();
+  }, 5 * 60 * 1000);
+
+  setSyncInterval(interval);
+  
+  // Perform initial sync
+  performAutoBackup();
+
+  toast("Auto-Sync Enabled", {
+    description: "Your data will be automatically synced every 5 minutes"
+  });
+};
+
+const stopAutoSync = () => {
+  setIsAutoSyncEnabled(false);
+  localStorage.removeItem("auto-sync-enabled");
+  
+  if (syncInterval) {
+    clearInterval(syncInterval);
+    setSyncInterval(null);
+  }
+
+  toast("Auto-Sync Disabled", {
+    description: "Your data will no longer be automatically synced"
+  });
+};
+
+// Watch for data changes and trigger sync
+useEffect(() => {
+  if (isAutoSyncEnabled && events.length > 0) {
+    const now = new Date();
+    // Only sync if last sync was more than 1 minute ago to prevent too frequent syncs
+    if (!lastSyncTime || (now.getTime() - lastSyncTime.getTime() > 60 * 1000)) {
+      performAutoBackup();
+      setLastSyncTime(now);
+    }
+  }
+}, [events, calendars, isAutoSyncEnabled]);
+
+// Cleanup on unmount
+useEffect(() => {
+  return () => {
+    if (syncInterval) {
+      clearInterval(syncInterval);
+    }
+  };
+}, [syncInterval]);
+
 return (
     <>
       <DropdownMenu>
@@ -353,6 +423,10 @@ return (
               >
                 <FolderSync className="mr-2 h-4 w-4" />
                 {language === "zh" ? "同步数据" : "Sync data"}
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => isAutoSyncEnabled ? stopAutoSync() : startAutoSync()}>
+                <FolderSync className="mr-2 h-4 w-4" />
+                {isAutoSyncEnabled ? "Disable Auto-Sync" : "Enable Auto-Sync"}
               </DropdownMenuItem>
               <SignOutButton signOutCallback={handleSignOut}>
                 <DropdownMenuItem className="cursor-pointer">
