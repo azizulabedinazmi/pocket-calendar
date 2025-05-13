@@ -1,17 +1,16 @@
 "use client"
 
-import { useState } from "react"
+import { useCalendar } from "@/components/context/CalendarContext"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
-import { Plus, ChevronDown, X } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { toast } from "sonner"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
 import { translations } from "@/lib/i18n"
-import { useCalendar } from "@/components/context/CalendarContext"
-import { CalendarIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { CalendarIcon, ChevronDown, Plus, X } from "lucide-react"
+import { useState } from "react"
+import { toast } from "sonner"
 
 interface SidebarProps {
   onCreateEvent: () => void
@@ -78,8 +77,8 @@ export default function Sidebar({
       setNewCategoryName("")
       setNewCategoryColor("bg-blue-500")
       setShowAddCategory(false)
-      toast(t.categoryAdded || "分类已添加", {
-        description: `${t.categoryAddedDesc || "已成功添加"} "${newCategoryName}" ${t.category || "分类"}`,
+      toast(t.categoryAdded || "Category added", {
+        description: `${t.categoryAddedDesc || "Successfully added"} "${newCategoryName}" ${t.category || "category"}`,
       })
     }
   }
