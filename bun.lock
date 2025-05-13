@@ -4,7 +4,7 @@
     "": {
       "name": "one-calendar",
       "dependencies": {
-        "@ai-sdk/groq": "^1.2.8",
+        "@ai-sdk/groq": "^1.2.9",
         "@clerk/localizations": "latest",
         "@clerk/nextjs": "latest",
         "@hookform/resolvers": "^3.9.1",
@@ -35,7 +35,8 @@
         "@vercel/analytics": "latest",
         "@vercel/blob": "latest",
         "@vercel/speed-insights": "latest",
-        "ai": "latest",
+        "@vercel/speed-insights": "latest",
+        "ai": "^4.3.15",
         "autoprefixer": "^10.4.20",
         "axios": "latest",
         "class-variance-authority": "^0.7.1",
