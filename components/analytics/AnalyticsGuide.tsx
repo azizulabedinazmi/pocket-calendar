@@ -17,7 +17,7 @@ export default function AnalyticsGuide() {
   const [open, setOpen] = useState(false)
   const [hasSeenGuide, setHasSeenGuide] = useLocalStorage("has-seen-analytics-guide", true) // Default to true, dialog won't show
   const language = "en" // Set language default to English
-  const t = translations[language] // Use English translations
+  const t = translations[language] // Use English translations 
 
   useEffect(() => {
     if (!hasSeenGuide) {
