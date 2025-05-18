@@ -34,7 +34,7 @@ A beautifully minimal open-source calendar app to plan your week and life. ✨
 - 🔐 **Privacy First** – Your data stays local and private
 - ☁️ **Cloud Sync** – Optional sync via Vercel Blob
 - 🌐 **Easy Authentication** – Seamless login with Clerk
-- 🌍 **Multilingual** – Supports English and Chinese
+- 🌍 **Multilingual** – Supports English and Bangla
 - 🧱 **Customizable** – Personalize themes and views
 - 📱 **Responsive Design** – Works on all devices
 - 🌤 **Weather Integration** – Real-time weather updates
