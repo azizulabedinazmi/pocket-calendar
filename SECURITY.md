@@ -7,7 +7,7 @@ At Tech-Art, we take security seriously. If you discover a security vulnerabilit
 ### How to Report
 
 - **Please use GitHub issues or Email to report security vulnerabilities**
-- **Email:** Send an email to [evan.huang000@proton.me](mailto:evan.huang000@proton.me) with the details of the vulnerability.
+- **Email:** Send an email to [azmi00121@gmail.com](mailto:azmi00121@gmail.com) with the details of the vulnerability.
 
 ### Responsible Disclosure
 
