@@ -136,13 +136,13 @@ This project is developed by:
       <br>
       <small>Lead Developer</small>
     </td>
-    <td style="padding: 1rem;">
-      <img src="https://github.com/Tanzila-Afrin.png" width="100" style="border-radius: 50%;">
-      <br><br>
-      <a href="https://github.com/Tanzila-Afrin">Tanzila Afrin</a>
-      <br>
-      <small>Developer</small>
-    </td>
+      <td style="padding: 1rem;">
+        <img src="https://github.com/Tanzila-Afrin.png" width="100" style="border-radius: 50%;">
+        <br><br>
+        <a href="https://github.com/Tanzila-Afrin">Tanzila Afrin</a>
+        <br>
+        <small>Developer</small>
+      </td>
     <td style="padding: 1rem;">
       <img src="https://github.com/isratjahan829.png" width="100" style="border-radius: 50%;">
       <br><br>
